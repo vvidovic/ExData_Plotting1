@@ -14,15 +14,17 @@ df.all$DateTime <- strptime(paste(df.all$Date, " ", df.all$Time), "%Y-%m-%d %H:%
 df.all$Global_active_power <- as.numeric(as.character(df.all$Global_active_power))
 
 # subseting only data for required dates
-df <- subset(df.all, df.all$Date >= as.Date('2007-02-01') & df.all$Date <= as.Date('2007-02-02'))
+df <- subset(df.all,
+             df.all$Date >= as.Date('2007-02-01') & df.all$Date <= as.Date('2007-02-02'))
 
 # setting locale to en_US for proper day in a week labels
 locale_original <- Sys.getlocale( category = "LC_TIME" )
 Sys.setlocale( category = "LC_TIME", locale = "en_US.UTF-8")
 
-# plotting histogram to png image file
+# plotting graph to png image file
 png("plot2.png", width = 504, height = 504)
-plot(x = df$DateTime, y = df$Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab = "" )
+plot(x = df$DateTime, y = df$Global_active_power,
+     type = "l", ylab = "Global Active Power (kilowatts)", xlab = "" )
 dev.off()
 
 # restoring original locale

@@ -13,10 +13,12 @@ df.all$Date <- as.Date(df.all$Date, format = "%d/%m/%Y")
 df.all$Global_active_power <- as.numeric(as.character(df.all$Global_active_power))
 
 # subseting only data for required dates
-df <- subset(df.all, df.all$Date >= as.Date('2007-02-01') & df.all$Date <= as.Date('2007-02-02'))
+df <- subset(df.all,
+             df.all$Date >= as.Date('2007-02-01') & df.all$Date <= as.Date('2007-02-02'))
 
 # plotting histogram to png image file
 png("plot1.png", width = 504, height = 504)
-hist(df$Global_active_power, main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red")
+hist(df$Global_active_power, main = "Global Active Power",
+     xlab = "Global Active Power (kilowatts)", col = "red")
 dev.off()
 
