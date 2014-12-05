@@ -2,9 +2,9 @@
 #  (2007-02-01 and 2007-02-02)
 
 # Reading dataset form csv file (if it doesn't exists allready)
-# if(!exists("df.all")) {
+if(!exists("df.all")) {
     df.all <- read.csv("../data//household_power_consumption.txt", sep = ";")
-# }
+}
 
 # Transforming strings in Date column to dates and appending DateTime column
 df.all$Date <- as.Date(df.all$Date, format = "%d/%m/%Y")
