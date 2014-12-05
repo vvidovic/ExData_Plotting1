@@ -3,7 +3,7 @@
 
 # Reading dataset form csv file (if it doesn't exists allready)
 if(!exists("df.all")) {
-    df.all <- read.csv("../data//household_power_consumption.txt", sep = ";")
+    df.all <- read.csv("../data//household_power_consumption.txt", sep = ";", na.strings = "?")
 } else {
     print("skipping read.csv, using existing data...")
 }
@@ -14,9 +14,6 @@ df <- subset(df.all, df.all$Date == '1/2/2007' | df.all$Date == '2/2/2007')
 # Transforming strings in Date column to dates and appending DateTime column
 df$Date <- as.Date(df$Date, format = "%d/%m/%Y")
 df$DateTime <- strptime(paste(df$Date, " ", df$Time), "%Y-%m-%d %H:%M:%S")
-
-# Transforming numeric values from levels
-df$Global_active_power <- as.numeric(as.character(df$Global_active_power))
 
 # setting locale to en_US for proper day in a week labels
 locale_original <- Sys.getlocale( category = "LC_TIME" )
