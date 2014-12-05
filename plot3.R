@@ -4,21 +4,22 @@
 # Reading dataset form csv file (if it doesn't exists allready)
 if(!exists("df.all")) {
     df.all <- read.csv("../data//household_power_consumption.txt", sep = ";")
+} else {
+    print("skipping read.csv, using existing data...")
 }
 
+# subseting only data for required dates
+df <- subset(df.all, df.all$Date == '1/2/2007' | df.all$Date == '2/2/2007')
+
 # Transforming strings in Date column to dates and appending DateTime column
-df.all$Date <- as.Date(df.all$Date, format = "%d/%m/%Y")
-df.all$DateTime <- strptime(paste(df.all$Date, " ", df.all$Time), "%Y-%m-%d %H:%M:%S")
+df$Date <- as.Date(df$Date, format = "%d/%m/%Y")
+df$DateTime <- strptime(paste(df$Date, " ", df$Time), "%Y-%m-%d %H:%M:%S")
 
 # Transforming numeric values from levels
-df.all$Global_active_power <- as.numeric(as.character(df.all$Global_active_power))
-df.all$Sub_metering_1 <- as.numeric(as.character(df.all$Sub_metering_1))
-df.all$Sub_metering_2 <- as.numeric(as.character(df.all$Sub_metering_2))
-df.all$Sub_metering_3 <- as.numeric(as.character(df.all$Sub_metering_3))
-
-# subseting only data for required dates
-df <- subset(df.all,
-             df.all$Date >= as.Date('2007-02-01') & df.all$Date <= as.Date('2007-02-02'))
+df$Global_active_power <- as.numeric(as.character(df$Global_active_power))
+df$Sub_metering_1 <- as.numeric(as.character(df$Sub_metering_1))
+df$Sub_metering_2 <- as.numeric(as.character(df$Sub_metering_2))
+df$Sub_metering_3 <- as.numeric(as.character(df$Sub_metering_3))
 
 # setting locale to en_US for proper day in a week labels
 locale_original <- Sys.getlocale( category = "LC_TIME" )
