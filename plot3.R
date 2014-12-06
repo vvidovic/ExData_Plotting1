@@ -20,7 +20,7 @@ locale_original <- Sys.getlocale( category = "LC_TIME" )
 Sys.setlocale( category = "LC_TIME", locale = "en_US.UTF-8")
 
 # plotting graph to png image file
-png("plot3.png", width = 504, height = 504)
+png("plot3.png", width = 480, height = 480)
 plot(x = df$DateTime, y = df$Sub_metering_1, type = "l",
      ylab = "Energy sub metering", xlab = "" )
 points(x = df$DateTime, y = df$Sub_metering_2, type = "l", col = "red")

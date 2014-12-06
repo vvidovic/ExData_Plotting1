@@ -20,7 +20,7 @@ locale_original <- Sys.getlocale( category = "LC_TIME" )
 Sys.setlocale( category = "LC_TIME", locale = "en_US.UTF-8")
 
 # plotting graph to png image file
-png("plot4.png", width = 504, height = 504)
+png("plot4.png", width = 480, height = 480)
 par(mfrow = c(2, 2))
 
 
