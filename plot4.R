@@ -19,8 +19,8 @@ df$DateTime <- strptime(paste(df$Date, " ", df$Time), "%Y-%m-%d %H:%M:%S")
 locale_original <- Sys.getlocale( category = "LC_TIME" )
 Sys.setlocale( category = "LC_TIME", locale = "en_US.UTF-8")
 
-# plotting graph to png image file
-png("plot4.png", width = 480, height = 480)
+# plotting graph to png image file - transparent background as in examples
+png("plot4.png", width = 480, height = 480, bg = "transparent")
 par(mfrow = c(2, 2))
 
 

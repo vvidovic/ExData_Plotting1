@@ -15,8 +15,8 @@ df <- subset(df.all, df.all$Date == '1/2/2007' | df.all$Date == '2/2/2007')
 df$Date <- as.Date(df$Date, format = "%d/%m/%Y")
 df$DateTime <- strptime(paste(df$Date, " ", df$Time), "%Y-%m-%d %H:%M:%S")
 
-# plotting histogram to png image file
-png("plot1.png", width = 480, height = 480)
+# plotting histogram to png image file - transparent background as in examples
+png("plot1.png", width = 480, height = 480, bg = "transparent")
 hist(df$Global_active_power, main = "Global Active Power",
      xlab = "Global Active Power (kilowatts)", col = "red")
 dev.off()
