@@ -1,7 +1,7 @@
 ## Electric power consumption: histogram of measurements of Global Active Power
 #  (2007-02-01 and 2007-02-02)
 
-# Extracted csv file (put to "data" subdirectory), data source:
+# Extracted csv file (put to "../data" directory), data source:
 # https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
 # Reading dataset form csv file (if it doesn't exists allready)
 if(!exists("df.all")) {
